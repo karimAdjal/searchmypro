@@ -1,0 +1,39 @@
+#form-container {
+    max-width: 400px; /* Limiter la largeur du formulaire */
+    margin: auto; /* Centrer le formulaire horizontalement */
+    padding: 15px; /* Ajouter un peu de marge intérieure pour un aspect plus agréable */
+    border: 1px solid #ccc; /* Ajouter une bordure grise autour du formulaire */
+    border-radius: 5px; /* Ajouter une bordure arrondie */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Ajouter une ombre légère */
+    margin-top: 50px; /* Ajouter une marge en haut pour centrer verticalement */
+    background-color: rgb(213, 167, 18); /* Fond jaune pour le formulaire */
+}
+
+#form-container h1 {
+    text-align: center; /* Centrer le texte à l'intérieur du formulaire */
+}
+
+.form-group {
+    margin-bottom: 15px; /* Ajouter de l'espace entre les éléments du formulaire */
+}
+
+#register-form {
+    background-color: #fff; /* Fond blanc pour les champs du formulaire */
+    color: #000; /* Texte en noir à l'intérieur du formulaire */
+    padding: 20px;
+    border-radius: 5px; /* Ajout d'une bordure arrondie */
+}
+
+.btn {
+    background-color: #000; /* Fond noir pour le bouton */
+    color: #fff; /* Texte en blanc pour le bouton */
+    border: solid #000 2px; /* Bordure noire pour le bouton */
+    border-radius: 5px; /* Ajout d'une bordure arrondie pour le bouton */
+    padding: 10px 20px; /* Ajout de rembourrage pour le bouton */
+    cursor: pointer; /* Changement du curseur au survol du bouton */
+}
+
+.alert {
+    margin-top: 20px;
+    text-align: center; /* Centrer le texte de l'alerte */
+}

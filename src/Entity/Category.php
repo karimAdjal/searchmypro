@@ -2,55 +2,28 @@
 
 namespace App\Entity;
 
+use App\Repository\CategoryRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
-/**
- * Category
- *
- * @ORM\Table(name="category")
- * @ORM\Entity(repositoryClass="App\Repository\CategoryRepository")
- */
+#[ORM\Entity(repositoryClass: CategoryRepository::class)]
 class Category
 {
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="id", type="integer", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
-     */
-    private $id;
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column]
+    private ?int $id = null;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="nom", type="string", length=255, nullable=false)
-     */
-    private $nom;
+    #[ORM\Column(length: 255)]
+    private ?string $secteur = null;
 
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     *
-     * @ORM\ManyToMany(targetEntity="Entreprise", inversedBy="category")
-     * @ORM\JoinTable(name="category_entreprise",
-     *   joinColumns={
-     *     @ORM\JoinColumn(name="category_id", referencedColumnName="id")
-     *   },
-     *   inverseJoinColumns={
-     *     @ORM\JoinColumn(name="entreprise_id", referencedColumnName="id")
-     *   }
-     * )
-     */
-    private $entreprise = array();
+    #[ORM\ManyToMany(targetEntity: Entreprise::class, mappedBy: 'categorie')]
+    private Collection $entreprises;
 
-    /**
-     * Constructor
-     */
     public function __construct()
     {
-        $this->entreprise = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->entreprises = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -58,14 +31,14 @@ class Category
         return $this->id;
     }
 
-    public function getNom(): ?string
+    public function getSecteur(): ?string
     {
-        return $this->nom;
+        return $this->secteur;
     }
 
-    public function setNom(string $nom): static
+    public function setSecteur(string $secteur): static
     {
-        $this->nom = $nom;
+        $this->secteur = $secteur;
 
         return $this;
     }
@@ -73,15 +46,16 @@ class Category
     /**
      * @return Collection<int, Entreprise>
      */
-    public function getEntreprise(): Collection
+    public function getEntreprises(): Collection
     {
-        return $this->entreprise;
+        return $this->entreprises;
     }
 
     public function addEntreprise(Entreprise $entreprise): static
     {
-        if (!$this->entreprise->contains($entreprise)) {
-            $this->entreprise->add($entreprise);
+        if (!$this->entreprises->contains($entreprise)) {
+            $this->entreprises->add($entreprise);
+            $entreprise->addCategorie($this);
         }
 
         return $this;
@@ -89,9 +63,10 @@ class Category
 
     public function removeEntreprise(Entreprise $entreprise): static
     {
-        $this->entreprise->removeElement($entreprise);
+        if ($this->entreprises->removeElement($entreprise)) {
+            $entreprise->removeCategorie($this);
+        }
 
         return $this;
     }
-
 }

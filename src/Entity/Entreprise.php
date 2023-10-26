@@ -2,101 +2,46 @@
 
 namespace App\Entity;
 
+use App\Repository\EntrepriseRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
-/**
- * Entreprise
- *
- * @ORM\Table(name="entreprise")
- * @ORM\Entity(repositoryClass="App\Repository\EntrepriseRepository")
- */
+#[ORM\Entity(repositoryClass: EntrepriseRepository::class)]
 class Entreprise
 {
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="id", type="integer", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
-     */
-    private $id;
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column]
+    private ?int $id = null;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="nom", type="string", length=255, nullable=false)
-     */
-    private $nom;
+    #[ORM\Column(length: 255)]
+    private ?string $nom = null;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="adresse", type="text", length=0, nullable=false)
-     */
-    private $adresse;
+    #[ORM\Column(type: Types::TEXT)]
+    private ?string $adresse = null;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="telephone", type="string", length=255, nullable=false)
-     */
-    private $telephone;
+    #[ORM\Column(length: 255)]
+    private ?string $email = null;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="email", type="string", length=255, nullable=false)
-     */
-    private $email;
+    #[ORM\Column(length: 255)]
+    private ?string $telephone = null;
 
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     *
-     * @ORM\ManyToMany(targetEntity="Category", mappedBy="entreprise")
-     */
-    private $category = array();
+    #[ORM\ManyToMany(targetEntity: User::class, mappedBy: 'entreprises')]
+    private Collection $users;
 
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     *
-     * @ORM\ManyToMany(targetEntity="Emplacement", inversedBy="entreprise")
-     * @ORM\JoinTable(name="entreprise_emplacement",
-     *   joinColumns={
-     *     @ORM\JoinColumn(name="entreprise_id", referencedColumnName="id")
-     *   },
-     *   inverseJoinColumns={
-     *     @ORM\JoinColumn(name="emplacement_id", referencedColumnName="id")
-     *   }
-     * )
-     */
-    private $emplacement = array();
+    #[ORM\ManyToMany(targetEntity: Emplacement::class, inversedBy: 'entreprises')]
+    private Collection $emplacement;
 
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     *
-     * @ORM\ManyToMany(targetEntity="User", inversedBy="entreprise")
-     * @ORM\JoinTable(name="entreprise_user",
-     *   joinColumns={
-     *     @ORM\JoinColumn(name="entreprise_id", referencedColumnName="id")
-     *   },
-     *   inverseJoinColumns={
-     *     @ORM\JoinColumn(name="user_id", referencedColumnName="id")
-     *   }
-     * )
-     */
-    private $user = array();
+    #[ORM\ManyToMany(targetEntity: Category::class, inversedBy: 'entreprises')]
+    private Collection $categorie;
 
-    /**
-     * Constructor
-     */
     public function __construct()
     {
-        $this->category = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->emplacement = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->user = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->users = new ArrayCollection();
+        $this->emplacement = new ArrayCollection();
+        $this->categorie = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -128,18 +73,6 @@ class Entreprise
         return $this;
     }
 
-    public function getTelephone(): ?string
-    {
-        return $this->telephone;
-    }
-
-    public function setTelephone(string $telephone): static
-    {
-        $this->telephone = $telephone;
-
-        return $this;
-    }
-
     public function getEmail(): ?string
     {
         return $this->email;
@@ -152,28 +85,40 @@ class Entreprise
         return $this;
     }
 
-    /**
-     * @return Collection<int, Category>
-     */
-    public function getCategory(): Collection
+    public function getTelephone(): ?string
     {
-        return $this->category;
+        return $this->telephone;
     }
 
-    public function addCategory(Category $category): static
+    public function setTelephone(string $telephone): static
     {
-        if (!$this->category->contains($category)) {
-            $this->category->add($category);
-            $category->addEntreprise($this);
+        $this->telephone = $telephone;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, User>
+     */
+    public function getUsers(): Collection
+    {
+        return $this->users;
+    }
+
+    public function addUser(User $user): static
+    {
+        if (!$this->users->contains($user)) {
+            $this->users->add($user);
+            $user->addEntreprise($this);
         }
 
         return $this;
     }
 
-    public function removeCategory(Category $category): static
+    public function removeUser(User $user): static
     {
-        if ($this->category->removeElement($category)) {
-            $category->removeEntreprise($this);
+        if ($this->users->removeElement($user)) {
+            $user->removeEntreprise($this);
         }
 
         return $this;
@@ -204,27 +149,26 @@ class Entreprise
     }
 
     /**
-     * @return Collection<int, User>
+     * @return Collection<int, Category>
      */
-    public function getUser(): Collection
+    public function getCategorie(): Collection
     {
-        return $this->user;
+        return $this->categorie;
     }
 
-    public function addUser(User $user): static
+    public function addCategorie(Category $categorie): static
     {
-        if (!$this->user->contains($user)) {
-            $this->user->add($user);
+        if (!$this->categorie->contains($categorie)) {
+            $this->categorie->add($categorie);
         }
 
         return $this;
     }
 
-    public function removeUser(User $user): static
+    public function removeCategorie(Category $categorie): static
     {
-        $this->user->removeElement($user);
+        $this->categorie->removeElement($categorie);
 
         return $this;
     }
-
 }
