@@ -2,47 +2,31 @@
 
 namespace App\Entity;
 
+use App\Repository\EmplacementRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
-/**
- * Emplacement
- *
- * @ORM\Table(name="emplacement")
- * @ORM\Entity(repositoryClass="App\Repository\EmplacementRepository")
- */
+#[ORM\Entity(repositoryClass: EmplacementRepository::class)]
 class Emplacement
 {
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="id", type="integer", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
-     */
-    private $id;
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column]
+    private ?int $id = null;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="nom", type="string", length=255, nullable=false)
-     */
-    private $nom;
+    #[ORM\Column(length: 255)]
+    private ?string $nom = null;
 
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     *
-     * @ORM\ManyToMany(targetEntity="Entreprise", mappedBy="emplacement")
-     */
-    private $entreprise = array();
+    #[ORM\Column(length: 255)]
+    private ?string $description = null;
 
-    /**
-     * Constructor
-     */
+    #[ORM\ManyToMany(targetEntity: Entreprise::class, mappedBy: 'emplacement')]
+    private Collection $entreprises;
+
     public function __construct()
     {
-        $this->entreprise = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->entreprises = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -62,18 +46,30 @@ class Emplacement
         return $this;
     }
 
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(string $description): static
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
     /**
      * @return Collection<int, Entreprise>
      */
-    public function getEntreprise(): Collection
+    public function getEntreprises(): Collection
     {
-        return $this->entreprise;
+        return $this->entreprises;
     }
 
     public function addEntreprise(Entreprise $entreprise): static
     {
-        if (!$this->entreprise->contains($entreprise)) {
-            $this->entreprise->add($entreprise);
+        if (!$this->entreprises->contains($entreprise)) {
+            $this->entreprises->add($entreprise);
             $entreprise->addEmplacement($this);
         }
 
@@ -82,11 +78,10 @@ class Emplacement
 
     public function removeEntreprise(Entreprise $entreprise): static
     {
-        if ($this->entreprise->removeElement($entreprise)) {
+        if ($this->entreprises->removeElement($entreprise)) {
             $entreprise->removeEmplacement($this);
         }
 
         return $this;
     }
-
 }

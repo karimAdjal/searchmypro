@@ -1,0 +1,15 @@
+
+form {
+    max-width: 400px; /* Limiter la largeur du formulaire */
+    margin: auto; /* Centrer le formulaire horizontalement */
+    padding: 15px; /* Ajouter un peu de marge intérieure pour un aspect plus agréable */
+    border: 1px solid #ccc; /* Ajouter une bordure grise autour du formulaire */
+    border-radius: 5px; /* Ajouter une bordure arrondie */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Ajouter une ombre légère */
+    margin-top: 50px; /* Ajouter une marge en haut pour centrer verticalement */
+    background-color: rgb(213, 167, 18); /* Fond jaune pour le formulaire */
+}
+
+.text-center {
+    text-align: center;
+}
