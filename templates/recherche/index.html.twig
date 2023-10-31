@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello RechercheController!{% endblock %}
+
+{% block body %}
+{% block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/register.css') }}">
+
+   <style>
+        body {
+            background-image: url('{{ asset('images/maison.jpg') }}');
+            background-size: cover;
+         
+        }
+    </style>
+
+
+{% endblock %}
+
+    <h1> Rechercher le meilleur professionnel pret de chez vous </h1>
+
+
+{% endblock %}
