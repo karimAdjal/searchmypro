@@ -64,9 +64,7 @@
 			const data = await response.json();
 			// Afficher les suggestions dans la div address-suggestions
 			suggestionsDiv.innerHTML = '';
-
-			
-
+            
 			if (data.length > 0) {
 				data.forEach((address) => {
 					const suggestionElement = document.createElement('div');

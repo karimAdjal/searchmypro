@@ -298,14 +298,7 @@ button {
     float: left;
     text-align: center;
 }
-.furniture_text{
-    width: 100%;
-    float: left;
-    font-size: 100px;
-    color: #090808;
-    text-align: center;
-    text-transform: uppercase;
-}
+
 .there_text {
     width: 50%;
     margin: 0 auto;
@@ -399,15 +392,7 @@ button {
     width: 100%;
     float: left;
 }
-.furnitures_text {
-    width: 100%;
-    float: left;
-    font-size: 24px;
-    color: #090808;
-    text-transform: uppercase;
-    text-align: center;
-    padding-top: 20px;
-}
+
 .dummy_text{
     width: 100%;
     float: left;
@@ -513,10 +498,7 @@ button {
     margin-left: 0px;
     margin-top: 10px;
 }
-.furnitures_section2{
-    width: 100%;
-    float: left;
-}
+
 
 .container_main {
   position: relative;
