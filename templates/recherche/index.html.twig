@@ -1,25 +1,42 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello RechercheController!{% endblock %}
-
-{% block body %}
 {% block stylesheets %}
     <link rel="stylesheet" type="text/css" href="/assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/register.css') }}">
-
-   <style>
+    <link rel="stylesheet" href="{{ asset('assets/css/recherche.css') }}">
+    <style>
         body {
             background-image: url('{{ asset('images/maison.jpg') }}');
             background-size: cover;
-         
         }
     </style>
-
-
 {% endblock %}
 
-    <h1> Rechercher le meilleur professionnel pret de chez vous </h1>
+{% block title %}Hello RechercheController!{% endblock %}
 
-
+{% block body %}
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card my-custom-form"> <!-- Ajoutez la classe à votre formulaire -->
+                    <div class="card-header">
+                        Recherchez votre professionnelle
+                    </div>
+                    <div class="card-body">
+                        <form action="#" method="GET">
+                            <div class="form-group">
+                                <label for="job-input">Métier :</label>
+                                <input type="text" id="job-input" name="job" class="form-control" placeholder="Entrez le métier recherché...">
+                            </div>
+                            <div class="form-group">
+                                <label for="location-input">Localisation :</label>
+                                <input type="text" id="location-input" name="location" class="form-control" placeholder="Dans quel ville effectuez-vous votre recherche ?">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Rechercher</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
