@@ -26,12 +26,12 @@ class RegistrationController extends AbstractController
     public function __construct(EmailVerifier $emailVerifier, private HttpClientInterface $httpClient)
     {
         $this->emailVerifier = $emailVerifier;
-        
     }
 
     #[Route('/register', name: 'app_register')]
     public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager): Response
     {
+        $thisUser = $this->getUser();
         $user = new User();
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
@@ -63,6 +63,7 @@ class RegistrationController extends AbstractController
 
         return $this->render('registration/register.html.twig', [
             'registrationForm' => $form->createView(),
+            'user' => $thisUser,
         ]);
     }
 
@@ -97,7 +98,7 @@ class RegistrationController extends AbstractController
                 'q' => $term,
                 'limit' => 5, // Nombre de suggestions proposées
             ]
-            ]);
+        ]);
 
         $data = $response->toArray();
 

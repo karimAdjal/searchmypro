@@ -1,56 +1,41 @@
-body {
-    /* ... autres styles ... */
-    font-family: Poppins;
-    overflow-x: hidden;
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #6a6764; /* Couleur de fond brun foncé */
+    padding: 20px; /* Ajustez la hauteur de la barre de navigation */
+    opacity: 0.7; /* Ajoutez une opacité (valeur entre 0 et 1) */
 }
 
-.navbar-light .navbar-nav .nav-link {
-    color: #111111;
-    font-size: 18px;
-    text-transform: uppercase;
+nav img {
+    max-width: 150px; /* Ajustez la largeur maximale du logo */
+    max-height: 80px; /* Ajustez la hauteur maximale du logo */
 }
 
-.navbar-light .navbar-nav .nav-link:focus, 
-.navbar-light .navbar-nav .nav-link:hover {
-    color: #ffb607;
+nav ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
 }
 
-.search_icon {
-    width: auto;
-    float: right;
-    text-align: right;
+nav ul li {
+    margin-right: 15px; /* Ajustez l'espacement entre les boutons */
 }
 
-.search_icon ul {
-    margin: 0px;
-    padding: 0px;
+nav a {
+    text-decoration: none;
+    color: #0f0e0e; /* Couleur du texte pour les boutons */
+    font-size: 18px; /* Ajustez la taille du texte des boutons */
+    padding: 10px 15px; /* Ajoutez un peu de rembourrage pour améliorer l'apparence */
+    border-radius: 5px; /* Ajoutez des coins arrondis aux boutons */
+    transition: background-color 0.3s ease; /* Ajoutez une transition pour une animation plus fluide */
+
+    /* Ajoutez une ombre légère au survol du bouton */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.search_icon li {
-    float: left;
-    padding-left: 20px;
-    font-size: 18px;
-    color: #000;
-}
-
-.search_icon li a {
-    color: #000;
-}
-
-.search_icon li a:hover {
-    color: #ffb607;
-}
-
-.navbar-expand-lg .navbar-nav .nav-link {
-    padding-right: 20px;
-    padding-left: 20px;
-}
-
-.nav-item {
-    position: relative;
-}
-
-.navbar-nav.mr-auto ul {
-    margin: 0px;
-    padding: 0px;
+nav a:hover {
+    background-color: #ffac5e; /* Couleur de fond au survol */
+    color: #bc0e0e; /* Couleur du texte au survol */
 }

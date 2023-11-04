@@ -1,45 +1,35 @@
+<nav>
+{% block stylesheets %}
 
-<div class="header_section">
-         <div class="container">
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
-             <div class="logo">
-            <a href="{{ path('app_home') }}"><img src="images/logok.png"></a>
-            </div>
+    <link rel="stylesheet" href="{{ asset('assets/css/navbar.css') }}"> <!-- Ajoutez cette ligne pour inclure votre fichier navbar.css -->
+   
+{% endblock %}
 
-               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-               <span class="navbar-toggler-icon"></span>
-               </button>
-               <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                  <ul class="navbar-nav mr-auto">
-                     <li class="nav-item">
-                     
-                     <a class="nav-link" href="{{ path('app_user_show') }}">Mon Profil</a>
 
-                    
-                     </li>
-                     <li class="nav-item">
-                        <a class="nav-link" href="{{ path('app_login') }}">Connection</a>
-                     </li>
-                 
-                     <li class="nav-item">
-                        <a class="nav-link" href="shop.html"></a>
-                     </li>
-                     <li class="nav-item">
-                        <a class="nav-link" href="contact.html">contact</a>
-                     </li>
-                     <li class="nav-item">
-                        <a class="nav-link" href="{{ path('app_recherche') }}">rechercher</a>
-                     </li>
-                  </ul>
-                  <form class="form-inline my-2 my-lg-0">
-                     <div class="search_icon">
-                        <ul>
-                       
-                           
-                  <li><a href="{{ path('app_login') }}"></a></li>
-                        </ul>
-                     </div>
-                  </form>
-               </div>
-            </nav>
-             </div>
+    <a href="{{ path('app_home') }}"><img src="images/logok.png"></a>
+   
+    <div id="navbarSupportedContent">
+        <ul>
+            
+              {% if user %} 
+
+            <li><a href="{{ path('app_user_show') }}">Mon Profil</a></li>
+
+                   <li><a href="{{ path('app_logout') }}">Deconnection</a></li>
+            
+             {% else %} 
+            <li><a href="{{ path('app_login') }}">Connection</a></li>
+
+              {% endif %} 
+            
+    
+
+            <li><a href="contact.html">Contact</a></li>
+
+            <li><a href="{{ path('app_recherche') }}">Rechercher</a></li>
+        </ul>
+       
+    </div>
+</nav>
+
+

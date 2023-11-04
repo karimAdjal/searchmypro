@@ -1,0 +1,33 @@
+
+ 
+    form {
+        background-color: rgb(255, 183, 0); /* Couleur or */
+        padding: 20px; /* Ajuste la marge intérieure du formulaire */
+        border-radius: 8px; /* Ajoute des coins arrondis au formulaire */
+        text-align: center; /* Centre le texte à l'intérieur du formulaire */
+        max-width: 400px; /* Ajuste la largeur maximale du formulaire selon vos besoins */
+        width: 100%; /* Pour que le formulaire s'adapte à la largeur maximale */
+        margin: auto; /* Centrer le formulaire horizontalement */
+        margin-top: 50px; /* Ajoute une marge en haut pour l'écart entre la navbar et le formulaire */
+     
+    }
+
+    form input[type="password"] {
+        width: 100%; /* Ajuste la largeur du champ de mot de passe à 100% */
+        margin-bottom: 15px; /* Ajuste l'espacement entre les champs de formulaire */
+        padding: 10px; /* Ajuste la marge intérieure du champ de formulaire */
+    }
+
+    form button {
+        background-color: #000; /* Couleur noire pour les boutons */
+        color: #fff; /* Couleur du texte blanc pour les boutons */
+        padding: 10px 20px; /* Ajuste la marge intérieure des boutons */
+        border: none; /* Supprime la bordure des boutons */
+        border-radius: 5px; /* Ajoute des coins arrondis aux boutons */
+        cursor: pointer;
+    }
+
+    form button:hover {
+        background-color: #333; /* Couleur de survol des boutons */
+    }
+

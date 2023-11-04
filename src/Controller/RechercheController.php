@@ -11,8 +11,13 @@ class RechercheController extends AbstractController
     #[Route('/recherche', name: 'app_recherche')]
     public function index(): Response
     {
+       
+        $user = $this->getUser();
+       
         return $this->render('recherche/index.html.twig', [
             'controller_name' => 'RechercheController',
+            'user' => $user, 
         ]);
+   
     }
 }
