@@ -1,33 +1,47 @@
+/* styles.css */
 
- 
-    form {
-        background-color: rgb(255, 183, 0); /* Couleur or */
-        padding: 20px; /* Ajuste la marge intérieure du formulaire */
-        border-radius: 8px; /* Ajoute des coins arrondis au formulaire */
-        text-align: center; /* Centre le texte à l'intérieur du formulaire */
-        max-width: 400px; /* Ajuste la largeur maximale du formulaire selon vos besoins */
-        width: 100%; /* Pour que le formulaire s'adapte à la largeur maximale */
-        margin: auto; /* Centrer le formulaire horizontalement */
-        margin-top: 50px; /* Ajoute une marge en haut pour l'écart entre la navbar et le formulaire */
-     
-    }
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+}
 
-    form input[type="password"] {
-        width: 100%; /* Ajuste la largeur du champ de mot de passe à 100% */
-        margin-bottom: 15px; /* Ajuste l'espacement entre les champs de formulaire */
-        padding: 10px; /* Ajuste la marge intérieure du champ de formulaire */
-    }
+#form-container {
+    max-width: 400px;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: rgb(213, 167, 18);
+}
 
-    form button {
-        background-color: #000; /* Couleur noire pour les boutons */
-        color: #fff; /* Couleur du texte blanc pour les boutons */
-        padding: 10px 20px; /* Ajuste la marge intérieure des boutons */
-        border: none; /* Supprime la bordure des boutons */
-        border-radius: 5px; /* Ajoute des coins arrondis aux boutons */
-        cursor: pointer;
-    }
+#form-container h1 {
+    text-align: center;
+}
 
-    form button:hover {
-        background-color: #333; /* Couleur de survol des boutons */
-    }
+.form-group {
+    margin-bottom: 15px;
+}
 
+#register-form {
+    background-color: #000; /* Couleur de fond noire */
+    color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.btn {
+    background-color: #000;
+    color: #fff;
+    border: solid #000 2px;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.alert {
+    margin-top: 20px;
+    text-align: center;
+}

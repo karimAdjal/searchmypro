@@ -28,9 +28,13 @@ class ResetPasswordController extends AbstractController
     use ResetPasswordControllerTrait;
 
     public function __construct(
+
+        
         private ResetPasswordHelperInterface $resetPasswordHelper,
         private EntityManagerInterface $entityManager
-    ) {
+    )
+     {
+        
     }
 
     /**
@@ -39,6 +43,9 @@ class ResetPasswordController extends AbstractController
     #[Route('', name: 'app_forgot_password_request')]
     public function request(Request $request, MailerInterface $mailer, TranslatorInterface $translator, AuthenticationUtils $authenticationUtils): Response
     {
+
+        
+        $thisUser = $this->getUser();
         $form = $this->createForm(ResetPasswordRequestFormType::class);
         $form->handleRequest($request);
 
@@ -56,10 +63,11 @@ class ResetPasswordController extends AbstractController
         }
 
         return $this->render('reset_password/request.html.twig', [
+            
             'requestForm' => $form->createView(),
             'error' => $error,
             'last_username' => $lastUsername,
-        
+            'user' => $thisUser,
         ]);
     }
 

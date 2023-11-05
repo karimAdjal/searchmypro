@@ -10,7 +10,7 @@
 
    <style>
         body {
-            background-image: url('{{ asset('images/chambre.jpg') }}');
+            background-image: url('{{ asset('images/lumiere2.jpg') }}');
             background-size: cover;
             background-position: center;
         }
@@ -28,7 +28,7 @@
 
     {% if app.user %}
         <div class="mb-3">
-            You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
+            vous etes connectes en tant que  {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
         </div>
     {% endif %}
 
@@ -44,13 +44,13 @@
 
 <div class="text-center">
     <button class="btn btn-lg btn-dark text-light" type="submit">
-        Se connecter
+        Connection
     </button>
 </div>
 
 <div class="text-center mt-3">
     <a href="{{ path('app_register') }}" class="btn btn-lg btn-dark text-light">
-        S'inscrire
+        Inscrivez vous
     </a>
 </div>
 

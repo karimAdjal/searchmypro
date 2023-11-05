@@ -36,6 +36,6 @@ nav a {
 }
 
 nav a:hover {
-    background-color: #ffac5e; /* Couleur de fond au survol */
-    color: #bc0e0e; /* Couleur du texte au survol */
+    background-color: #e30808; /* Couleur de fond au survol */
+    color: #fae5e5; /* Couleur du texte au survol */
 }
