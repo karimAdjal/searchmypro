@@ -1,41 +1,31 @@
-/* styles.css */
-
-
-.principal{
-display: flex;
-    justify-content: center;
-}
-#form-container {
-   
+/* Ajoutez cette classe spécifique pour votre formulaire */
+.my-custom-form {
+    max-width: 400px;
+    margin: auto;
     padding: 15px;
     border: 1px solid #ccc;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    background-color: rgb(213, 167, 18);
-    display: flex;
-    flex-direction: column;
-    width: 800px;
-
+    margin-top: 50px;
+    background-color: rgb(230, 198, 21); /* Fond jaune pour le formulaire */
 }
 
-#form-container h1 {
+.my-custom-form h1 {
     text-align: center;
-    margin-bottom: 10px;
 }
 
-.form-group {
+.my-custom-form .form-group {
     margin-bottom: 15px;
 }
 
-#register-form {
-    background-color: #000; /* Couleur de fond noire */
-    color: #fff;
+.my-custom-form #register-form {
+    background-color: #fff;
+    color: #000;
     padding: 20px;
     border-radius: 5px;
-    margin-top: 20px;
 }
 
-.btn {
+.my-custom-form .btn {
     background-color: #000;
     color: #fff;
     border: solid #000 2px;
@@ -44,7 +34,7 @@ display: flex;
     cursor: pointer;
 }
 
-.alert {
+.my-custom-form .alert {
     margin-top: 20px;
     text-align: center;
 }

@@ -4,7 +4,7 @@
 
 {% block stylesheets %}
   
-   <link rel="stylesheet" href="{{ asset('assets/css/request.css.css') }}">
+   <link rel="stylesheet" href="{{ asset('assets/css/request.css') }}">
 
     {% endblock %}
 
@@ -14,6 +14,7 @@
     {% for flash_error in app.flashes('reset_password_error') %}
         <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
     {% endfor %}
+    <div class="principal">
     <div id="form-container">
         <h1>Reinitialisation de mot de passe</h1>
         
@@ -24,5 +25,6 @@
             </div>
             <button class="btn btn-primary">Send password reset email</button>
         {{ form_end(requestForm) }}
+    </div>
     </div>
 {% endblock %}

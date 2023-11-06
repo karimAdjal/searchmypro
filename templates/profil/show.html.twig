@@ -4,7 +4,6 @@
 
 {% block stylesheets %}
     <link rel="stylesheet" type="text/css" href="/assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/recherche.css') }}">
     <style>
         body {
@@ -15,45 +14,36 @@
 {% endblock %}
 
 {% block body %}
+<div class="card my-custom-form">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <th>Email</th>
+                            <td>{{ user.email }}</td>
+                        </tr>
+                        <tr>
+                            <th>Mot de passe</th>
+                            <td>********</td>
+                        </tr>
+                        <tr>
+                            <th>Est vérifié</th>
+                            <td>{{ user.isVerified ? 'Oui' : 'Non' }}</td>
+                        </tr>
+                    </tbody>
+                </table>
 
+                <div class="button-group mb-3">
+                    <a href="{{ path('app_home') }}" class="btn btn-dark">Retour à la liste</a>
+                </div>
 
-      
-        <div class="card my-custom-form">
-           <div class="container">
-    <div class="row">
-        <div class="col-md-6">
-            <h1>Utilisateur</h1>
-
-      
-            <table class="table">
-                <tbody>
-                    <tr>
-                        <th>Id</th>
-                        <!-- <td>{{ user.prenom }} {{ user.nom }} </td> -->
-                    </tr>
-                    <tr>
-                        <th>Email</th>
-                        <td>{{ user.email }}</td>
-                    </tr>
-                    <tr>
-                        <th>Mot de passe</th>
-                        <td>********</td>
-                    </tr>
-                    <tr>
-                        <th>Est vérifié</th>
-                        <td>{{ user.isVerified ? 'Oui' : 'Non' }}</td>
-                    </tr>
-                </tbody>
-            </table>
-
-   
-            <a href="{{ path('app_home') }}" class="btn btn-dark">Retour à la liste</a>
-            
-            <a href="{{ path('app_user_edit', {'id': user.id}) }}" class="btn btn-dark">Modifier</a>
-        </div>
+                <div class="button-group">
+                    <a href="{{ path('app_user_edit', {'id': user.id}) }}" class="btn btn-dark">Modifier</a>
+                </div>
+            </div>
         </div>
     </div>
 </div>
-
-           
 {% endblock %}
