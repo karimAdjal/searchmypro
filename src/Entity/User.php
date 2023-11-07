@@ -30,6 +30,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     #[ORM\Column]
     private ?string $password = null;
+     private ?string $plainPassword = null;
+
+
 
     #[ORM\ManyToMany(targetEntity: Entreprise::class, inversedBy: 'users')]
     private Collection $entreprises;
@@ -192,4 +195,24 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
+
+     /**
+      * Get the value of plainPassword
+      */ 
+     public function getPlainPassword()
+     {
+          return $this->plainPassword;
+     }
+
+     /**
+      * Set the value of plainPassword
+      *
+      * @return  self
+      */ 
+     public function setPlainPassword($plainPassword)
+     {
+          $this->plainPassword = $plainPassword;
+
+          return $this;
+     }
 }

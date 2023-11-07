@@ -1,0 +1,11 @@
+/* change the background color of the <body> */
+
+:root {
+    --body-bg: rgb(195, 151, 18);
+    --body-color: rgb(227, 189, 17);
+    --font-size-base: 13px;
+    
+    --border-radius: 0px;
+    --margin : 2px;
+    
+    }
